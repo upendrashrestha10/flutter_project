@@ -1,7 +1,8 @@
 # Treat all Dart files as Dart
 *.dart linguist-language=Dart
 
-# Optional: ignore build folder for language stats
+# Ignore native and build folders from language stats
 /build/** linguist-vendored=true
-.ios/** linguist-vendored=true
-.android/** linguist-vendored=true
+/.ios/** linguist-vendored=true
+/.android/** linguist-vendored=true
+/.gradle/** linguist-vendored=true
