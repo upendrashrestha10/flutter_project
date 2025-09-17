@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 
-class AddPage extends StatefulWidget {
-  const AddPage({super.key});
+class AddPage extends StatelessWidget {
+  Function onSUbmit;
 
-  @override
-  State<AddPage> createState() => _AddPageState();
-}
+  AddPage(this.onSUbmit, {super.key});
 
-class _AddPageState extends State<AddPage> {
   @override
   Widget build(BuildContext context) {
+    var titleController = TextEditingController();
+    var subtitlecontroller = TextEditingController();
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Task Page'),
+      ),
       body: Center(
         child: Container(
           margin: EdgeInsets.only(left: 20, right: 20),
@@ -39,6 +41,7 @@ class _AddPageState extends State<AddPage> {
               ),
 
               TextField(
+                controller: titleController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
@@ -61,6 +64,7 @@ class _AddPageState extends State<AddPage> {
               ),
 
               TextField(
+                controller: subtitlecontroller,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
@@ -76,7 +80,13 @@ class _AddPageState extends State<AddPage> {
 
               Center(
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    onSUbmit(
+                      titleController.value.text,
+                      subtitlecontroller.value.text,
+                    );
+                    Navigator.of(context).pop();
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blueAccent,
                     elevation: 20,
